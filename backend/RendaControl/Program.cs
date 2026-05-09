@@ -3,40 +3,57 @@ using RendaControl.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Banco PostgreSQL
+// 1. Configuração do Banco PostgreSQL
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Controllers
-builder.Services.AddControllers();
+// 2. Configuração do CORS (Política Nomeada)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("OpenPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
-// Swagger
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-// CORS
-builder.Services.AddCors();
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 
-// Swagger
+// 3. Execução das Migrations automaticamente no Deploy
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.Migrate();
+        Console.WriteLine("Banco de dados sincronizado com sucesso!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro ao sincronizar banco: {ex.Message}");
+    }
+}
+
+// 4. Middlewares
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// CORS
-app.UseCors(policy => policy
-    .AllowAnyOrigin()
-    .AllowAnyMethod()
-    .AllowAnyHeader());
+// O UseCors deve vir exatamente aqui: após o Swagger e antes da Autorização
+app.UseCors("OpenPolicy");
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
+// 5. Configuração de Porta para o Railway
 var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
 app.Run($"http://0.0.0.0:{port}");

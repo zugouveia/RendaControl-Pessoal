@@ -9,9 +9,12 @@ document.querySelector(".botao-logout").addEventListener("click", function () {
   window.location.href = "login.html";
 });
 
-const API_SERVICOS = "https://localhost:7058/api/servicos";
-const API_DESPESAS = "https://localhost:7058/api/despesas";
-const API_CLIENTES = "https://localhost:7058/api/clientes";
+const API_SERVICOS =
+  "https://rendacontrol-pessoal-production.up.railway.app/api/servicos";
+const API_DESPESAS =
+  "https://rendacontrol-pessoal-production.up.railway.app/api/despesas";
+const API_CLIENTES =
+  "https://rendacontrol-pessoal-production.up.railway.app/api/clientes";
 
 const filtroPeriodo = document.getElementById("filtro-periodo");
 const filtroCliente = document.getElementById("filtro-cliente");

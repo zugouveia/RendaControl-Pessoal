@@ -9,8 +9,8 @@ document.querySelector(".botao-logout").addEventListener("click", function () {
   window.location.href = "login.html";
 });
 
-const API_DESPESAS = "https://localhost:7058/api/despesas";
-const API_SERVICOS = "https://localhost:7058/api/servicos";
+const API_DESPESAS = "https://rendacontrol-pessoal-production.up.railway.app/api/despesas";
+const API_SERVICOS = "https://rendacontrol-pessoal-production.up.railway.app/api/servicos";
 
 const formDespesa = document.getElementById("form-despesa");
 const tabelaDespesasBody = document.getElementById("tabela-despesas-body");

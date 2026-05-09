@@ -1,4 +1,4 @@
-const API_USUARIOS = "https://localhost:7058/api/usuarios";
+const API_USUARIOS = "https://rendacontrol-pessoal-production.up.railway.app/api/usuarios";
 
 const abaEntrar = document.getElementById("aba-entrar");
 const abaCadastrar = document.getElementById("aba-cadastrar");

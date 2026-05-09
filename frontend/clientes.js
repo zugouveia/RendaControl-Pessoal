@@ -9,8 +9,8 @@ document.querySelector(".botao-logout").addEventListener("click", function () {
   window.location.href = "login.html";
 });
 
-const API_URL = "https://localhost:7058/api/clientes";
-const API_SERVICOS = "https://localhost:7058/api/servicos";
+const API_URL = "https://rendacontrol-pessoal-production.up.railway.app/api/clientes";
+const API_SERVICOS = "https://rendacontrol-pessoal-production.up.railway.app/api/servicos";
 
 const campoBusca = document.querySelector(".campo-busca");
 const tabelaBody = document.querySelector(".tabela-clientes tbody");

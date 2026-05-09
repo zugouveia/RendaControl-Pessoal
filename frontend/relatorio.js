@@ -1,4 +1,3 @@
-// PROTECAO DE ROTA
 // Se o usuário não estiver logado, redireciona para o login.
 if (!localStorage.getItem("usuarioId")) {
   window.location.href = "index.html";

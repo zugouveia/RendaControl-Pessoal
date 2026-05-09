@@ -1,12 +1,12 @@
 // PROTECAO DE ROTA
 // Se o usuário não estiver logado, redireciona para o login.
 if (!localStorage.getItem("usuarioId")) {
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 }
 // logout
 document.querySelector(".botao-logout").addEventListener("click", function () {
   localStorage.clear();
-  window.location.href = "login.html";
+  window.location.href = "index.html";
 });
 
 const API_URL = "https://rendacontrol-pessoal-production.up.railway.app/api/clientes";

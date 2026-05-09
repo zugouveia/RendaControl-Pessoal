@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Despesas</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="header-esquerda">
+        <div class="logo">
+          <strong>Renda</strong><span>Control</span>
+        </div>
+        <nav class="navegacao">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="clientes.html">Clientes</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="despesas.html" class="ativo">Financeiro</a></li>
+            <li><a href="relatorio.html">Relatórios</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-direita">
+        <button class="botao-logout">LOGOUT</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <div class="dashboard-topo">
+      <h1 class="dashboard-titulo">Controle Financeiro</h1>
+      <p class="dashboard-subtitulo">Receitas, despesas e saldo do mês</p>
+    </div>
+
+    <!-- Cards -->
+    <section class="resumo-grade">
+      <div class="resumo-cartao">
+        <p class="resumo-label">Despesas Totais</p>
+        <span class="resumo-valor destaque-vermelho" id="total-despesas">--</span>
+        <span class="resumo-detalhe" id="detalhe-despesas">--</span>
+      </div>
+      <div class="resumo-cartao">
+        <p class="resumo-label">Saldo Líquido</p>
+        <span class="resumo-valor destaque-verde" id="saldo-liquido">--</span>
+        <span class="resumo-detalhe" id="detalhe-saldo">--</span>
+      </div>
+    </section>
+
+    <section class="dashboard-conteudo">
+
+      <!-- Tabela -->
+      <div class="painel">
+        <div class="painel-header">
+          <h2 class="painel-title">Lançamentos</h2>
+          <select id="filtro-tipo" class="campo-busca">
+            <option value="">Todos</option>
+            <option value="despesa">Despesas</option>
+          </select>
+        </div>
+
+        <div class="tabela-container">
+          <table class="tabela-clientes">
+            <thead>
+              <tr>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Data</th>
+                <th>Valor</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-despesas-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <div class="painel">
+        <h2 class="painel-title" id="titulo-form-despesa">Registrar Nova Despesa</h2>
+        <form id="form-despesa">
+
+          <div class="campo campo-cheio">
+            <label>Descrição *</label>
+            <input type="text" id="input-descricao-despesa" placeholder="Ex: Internet" required>
+          </div>
+
+          <div class="campo">
+            <label>Valor (R$) *</label>
+            <input type="number" id="input-valor-despesa" placeholder="0.00" step="0.01" required>
+          </div>
+
+          <div class="campo">
+            <label>Data *</label>
+            <input type="date" id="input-data-despesa" required>
+          </div>
+
+          <div class="campo campo-cheio">
+            <label>Categoria</label>
+            <input type="text" id="input-categoria-despesa" placeholder="Ex: Despesa fixa, Material de trabalho">
+          </div>
+
+          <div class="form-botoes campo-cheio">
+            <button type="submit" class="btn-salvar" id="btn-registrar-despesa">Registrar</button>
+            <button type="button" class="btn-cancelar" id="btn-limpar-despesa">Limpar</button>
+          </div>
+
+        </form>
+      </div>
+
+    </section>
+  </main>
+
+  <script src="despesas.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Clientes</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="header-esquerda">
+        <div class="logo">
+          <strong>Renda</strong><span>Control</span>
+        </div>
+
+        <nav class="navegacao">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="clientes.html" class="ativo">Clientes</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="despesas.html">Financeiro</a></li>
+            <li><a href="relatorio.html">Relatórios</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-direita">
+        <button class="botao-logout">LOGOUT</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <div class="dashboard-topo">
+      <h1 class="dashboard-titulo">Clientes</h1>
+      <p class="dashboard-subtitulo">Gerencie sua carteira de clientes</p>
+    </div>
+
+    <section class="resumo-grade">
+      <div class="resumo-cartao">
+        <p class="resumo-label">Total de Clientes</p>
+        <span class="resumo-valor">24</span>
+        <span class="resumo-detalhe">+3 este mês</span>
+      </div>
+
+      <div class="resumo-cartao">
+        <p class="resumo-label">Clientes Ativos</p>
+        <span class="resumo-valor destaque-verde">18</span>
+        <span class="resumo-detalhe">75% da base</span>
+      </div>
+
+      <div class="resumo-cartao">
+        <p class="resumo-label">Receita Média</p>
+        <span class="resumo-valor">R$ 352</span>
+        <span class="resumo-detalhe">Por cliente / mês</span>
+      </div>
+    </section>
+
+    <section class="dashboard-conteudo">
+
+      <div class="painel painel-lista">
+        <div class="painel-header">
+          <h2 class="painel-title">Lista de Clientes</h2>
+          <input type="search" class="campo-busca" placeholder="Buscar cliente...">
+        </div>
+
+        <div class="tabela-container">
+          <table class="tabela-clientes">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Serviços</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="coluna-acoes">
+
+        <section class="painel">
+          <h2 class="painel-title">Cadastrar novo cliente</h2>
+          <form class="form-cadastro">
+            <div class="campo campo-cheio">
+              <label>Nome Completo</label>
+              <input type="text" placeholder="Nome do cliente" required>
+            </div>
+
+            <div class="campo">
+              <label>Telefone</label>
+              <input type="tel" placeholder="(11) 99999-0000" required>
+            </div>
+
+            <div class="campo">
+              <label>E-mail</label>
+              <input type="email" placeholder="email@exemplo.com" required>
+            </div>
+
+            <div class="campo campo-cheio">
+              <label>Endereço</label>
+              <input type="text" placeholder="Rua, número, cidade" required>
+            </div>
+
+            <div class="form-botoes">
+              <button type="submit" class="btn-salvar">Salvar</button>
+              <button type="button" class="btn-cancelar">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="painel painel-historico">
+          <h2 class="painel-titulo">Histórico</h2>
+          <div class="historico-lista">
+            <span>Nenhum histórico disponível</span>
+          </div>
+        </section>
+
+      </div>
+    </section>
+  </main>
+
+  <script src="clientes.js"></script>
+</body>
+
+</html>

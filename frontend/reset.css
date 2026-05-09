@@ -1,0 +1,58 @@
+/* Remove margens e paddings padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ajusta fontes para uma experiência mais consistente */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Remove estilos padrão de listas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove decoração de links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Define um estilo básico para elementos de formulário */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Botões e elementos clicáveis como cursor pointer */
+button {
+  cursor: pointer;
+}
+
+/* Garante que imagens não ultrapassem o contêiner */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Zera estilos de tabelas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}

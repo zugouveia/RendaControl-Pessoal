@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RendaControl — Login</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="pagina-auth">
+
+  <div class="auth-container">
+
+    <!-- Lado esquerdo — apresentacao -->
+    <div class="auth-esquerda">
+      <div class="logo auth-logo">
+        <strong>Renda</strong><span>Control</span>
+      </div>
+      <p class="auth-descricao">Gestão financeira para autônomos e MEIs</p>
+      <ul class="auth-lista">
+        <li>Controle de receitas e despesas</li>
+        <li>Cadastro de clientes e serviços</li>
+        <li>Relatórios financeiros por período</li>
+        <li>Controle de pagamentos pendentes</li>
+      </ul>
+    </div>
+
+    <!-- Lado direito — login e cadastro -->
+    <div class="auth-direita">
+      <div class="auth-card">
+
+        <h1 class="auth-titulo">Bem-vindo</h1>
+        <p class="auth-subtitulo">Acesse sua conta ou crie uma nova</p>
+
+        <!-- Abas Entrar / Cadastrar -->
+        <div class="auth-abas">
+          <button class="auth-aba ativa" id="aba-entrar">Entrar</button>
+          <button class="auth-aba" id="aba-cadastrar">Cadastrar</button>
+        </div>
+
+        <!-- Mensagem de erro -->
+        <p class="auth-erro" id="auth-erro"></p>
+
+        <!-- Formulário de Login -->
+        <div id="form-login">
+          <div class="campo">
+            <input type="email" id="login-email" class="campo-input" placeholder="E-mail" />
+          </div>
+          <div class="campo">
+            <input type="password" id="login-senha" class="campo-input" placeholder="Senha" />
+          </div>
+          <button class="btn-auth" id="btn-entrar">Entrar na conta</button>
+          <p class="auth-link-texto">
+            Não tem uma conta?
+            <a href="#" id="link-para-cadastro">Cadastre-se</a>
+          </p>
+        </div>
+
+        <!-- Formulario de cadastro -->
+        <div id="form-cadastro" style="display: none;">
+          <div class="campos-lado-a-lado">
+            <div class="campo">
+              <label class="campo-label">Nome</label>
+              <input type="text" id="cadastro-nome" class="campo-input" placeholder="Nome" />
+            </div>
+            <div class="campo">
+              <label class="campo-label">E-mail</label>
+              <input type="email" id="cadastro-email" class="campo-input" placeholder="E-mail" />
+            </div>
+          </div>
+          <div class="campo">
+            <label class="campo-label">Senha</label>
+            <input type="password" id="cadastro-senha" class="campo-input" placeholder="Senha" />
+          </div>
+          <button class="btn-auth" id="btn-cadastrar">Criar conta</button>
+          <p class="auth-link-texto">
+            Já tem uma conta?
+            <a href="#" id="link-para-login">Faça login</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="login-auth.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios — RendaControl</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header-content">
+      <div class="header-esquerda">
+        <div class="logo">
+          <strong>Renda</strong><span>Control</span>
+        </div>
+        <nav class="navegacao">
+          <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="clientes.html">Clientes</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="despesas.html">Financeiro</a></li>
+            <li><a href="relatorio.html" class="ativo">Relatórios</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header-direita">
+        <button class="botao-logout">LOGOUT</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard">
+
+    <!-- Topo -->
+    <div class="dashboard-topo">
+      <div>
+        <h1 class="dashboard-titulo">Relatórios</h1>
+        <p class="dashboard-subtitulo">Análises financeiras e resumos por cliente</p>
+      </div>
+      <button class="btn-salvar" id="btn-exportar">Exportar Relatório</button>
+    </div>
+
+    <!-- Filtros -->
+    <div class="painel" id="painel-filtros">
+      <h2 class="painel-title">Filtros do Relatório</h2>
+      <div class="form-relatorio">
+
+        <div class="campo">
+          <label for="filtro-periodo">Período</label>
+          <select id="filtro-periodo" class="campo-select">
+            <!-- Preenchido pelo JS -->
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="filtro-cliente">Cliente</label>
+          <select id="filtro-cliente" class="campo-select">
+            <option value="">Todos os clientes</option>
+            <!-- Preenchido pelo JS -->
+          </select>
+        </div>
+
+        <div class="campo campo-botao">
+          <button class="btn-salvar" id="btn-gerar">Gerar relatório</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cards KPI -->
+    <section class="resumo-grade resumo-grade-3">
+      <div class="resumo-cartao">
+        <p class="resumo-label">Despesas</p>
+        <span class="resumo-valor destaque-vermelho" id="rel-despesas">--</span>
+        <span class="resumo-detalhe" id="rel-despesas-detalhe">--</span>
+      </div>
+      <div class="resumo-cartao">
+        <p class="resumo-label">Lucro Líquido</p>
+        <span class="resumo-valor destaque-verde" id="rel-lucro">--</span>
+        <span class="resumo-detalhe" id="rel-lucro-detalhe">--</span>
+      </div>
+      <div class="resumo-cartao">
+        <p class="resumo-label">Serviços Realizados</p>
+        <span class="resumo-valor" id="rel-servicos">--</span>
+        <span class="resumo-detalhe" id="rel-servicos-detalhe">--</span>
+      </div>
+    </section>
+
+    <!-- Resumo do período -->
+    <div class="painel" id="painel-resumo">
+      <h2 class="painel-title">Resumo do Período</h2>
+
+      <div class="resumo-linha">
+        <span>Total de serviços</span>
+        <span id="res-total-servicos">--</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Serviços pagos</span>
+        <span id="res-pagos" class="destaque-verde">--</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Serviços pendentes</span>
+        <span id="res-pendentes" class="destaque-amarelo">--</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Serviços atrasados</span>
+        <span id="res-atrasados" class="destaque-vermelho">--</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Receita bruta</span>
+        <span id="res-receita-bruta">--</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Total de despesas</span>
+        <span id="res-total-despesas">--</span>
+      </div>
+      <div class="resumo-linha resumo-linha-destaque">
+        <span>Lucro líquido</span>
+        <span id="res-lucro-liquido" class="destaque-verde">--</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Margem de lucro</span>
+        <span id="res-margem">--</span>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <button class="btn-salvar" id="btn-pdf" style="width: 100%;">Gerar recibo / PDF</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="relatorio.js"></script>
+</body>
+
+</html>

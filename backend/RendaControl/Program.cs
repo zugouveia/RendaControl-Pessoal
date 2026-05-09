@@ -5,18 +5,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1. Configuração do Banco PostgreSQL
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
+options.UseNpgsql(
+builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // 2. Configuração do CORS (Política Nomeada)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("OpenPolicy", policy =>
-    {
-        policy.AllowAnyOrigin()
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
+options.AddPolicy("OpenPolicy", policy =>
+{
+policy.AllowAnyOrigin() // Permite qualquer site acessar a API
+.AllowAnyMethod() // Permite GET, POST, PUT, DELETE
+.AllowAnyHeader(); // Permite qualquer cabeçalho
+});
 });
 
 builder.Services.AddControllers();
@@ -30,17 +30,17 @@ var app = builder.Build();
 // 3. Execução das Migrations automaticamente no Deploy
 using (var scope = app.Services.CreateScope())
 {
-    var services = scope.ServiceProvider;
-    try
-    {
-        var context = services.GetRequiredService<AppDbContext>();
-        context.Database.Migrate();
-        Console.WriteLine("Banco de dados sincronizado com sucesso!");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Erro ao sincronizar banco: {ex.Message}");
-    }
+var services = scope.ServiceProvider;
+try
+{
+var context = services.GetRequiredService<AppDbContext>();
+context.Database.Migrate();
+Console.WriteLine("Banco de dados sincronizado com sucesso!");
+}
+catch (Exception ex)
+{
+Console.WriteLine($"Erro ao sincronizar banco: {ex.Message}");
+}
 }
 
 // 4. Middlewares

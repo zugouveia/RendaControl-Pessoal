@@ -56,6 +56,9 @@
             Não tem uma conta?
             <a href="#" id="link-para-cadastro">Cadastre-se</a>
           </p>
+          <p class="auth-link-texto">
+            Esqueceu a senha? <a href="#" id="link-recuperar">Recuperar</a>
+          </p>
         </div>
 
         <!-- Formulario de cadastro -->
@@ -78,6 +81,21 @@
           <p class="auth-link-texto">
             Já tem uma conta?
             <a href="#" id="link-para-login">Faça login</a>
+          </p>
+        </div>
+
+        <!-- Formulário de Recuperação -->
+        <div id="form-recuperar" style="display: none;">
+          <p class="auth-subtitulo">Digite seu e-mail e escolha uma nova senha para redefinir o acesso.</p>
+          <div class="campo">
+            <input type="email" id="recuperar-email" class="campo-input" placeholder="E-mail" />
+          </div>
+          <div class="campo">
+            <input type="password" id="recuperar-senha" class="campo-input" placeholder="Nova senha" />
+          </div>
+          <button class="btn-auth" id="btn-recuperar">Redefinir senha</button>
+          <p class="auth-link-texto">
+            Lembrou a senha? <a href="#" id="link-voltar-login">Voltar ao login</a>
           </p>
         </div>
 

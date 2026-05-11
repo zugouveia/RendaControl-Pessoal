@@ -1,4 +1,5 @@
-const API_USUARIOS = "https://rendacontrol-pessoal-production.up.railway.app/api/usuarios";
+const API_USUARIOS =
+  "https://rendacontrol-pessoal-production.up.railway.app/api/usuarios";
 
 const abaEntrar = document.getElementById("aba-entrar");
 const abaCadastrar = document.getElementById("aba-cadastrar");
@@ -9,6 +10,11 @@ const btnEntrar = document.getElementById("btn-entrar");
 const btnCadastrar = document.getElementById("btn-cadastrar");
 const linkParaCadastro = document.getElementById("link-para-cadastro");
 const linkParaLogin = document.getElementById("link-para-login");
+
+const formRecuperar = document.getElementById("form-recuperar");
+const linkRecuperar = document.getElementById("link-recuperar");
+const linkVoltarLogin = document.getElementById("link-voltar-login");
+const btnRecuperar = document.getElementById("btn-recuperar");
 
 //VER SE JA TA LOGADO
 
@@ -61,7 +67,7 @@ btnEntrar.addEventListener("click", async function () {
   const email = document.getElementById("login-email").value;
   const senha = document.getElementById("login-senha").value;
 
-  // Validacao basica antes do API
+  // Validacao antes do API
   if (!email || !senha) {
     mostrarErro("Preencha o e-mail e a senha.");
     return;
@@ -150,4 +156,64 @@ btnCadastrar.addEventListener("click", async function () {
     btnCadastrar.disabled = false;
     btnCadastrar.textContent = "Criar conta";
   }
+});
+
+//Recuperar senha
+function mostrarRecuperar() {
+  formLogin.style.display = "none";
+  formCadastro.style.display = "none";
+  formRecuperar.style.display = "block";
+  abaEntrar.classList.remove("ativa");
+  abaCadastrar.classList.remove("ativa");
+  mensagemErro.textContent = "";
+}
+
+linkRecuperar.addEventListener("click", function (e) {
+  e.preventDefault();
+  mostrarRecuperar();
+});
+
+linkVoltarLogin.addEventListener("click", function (e) {
+  e.preventDefault();
+  mostrarLogin();
+});
+
+btnRecuperar.addEventListener("click", async function () {
+  const email = document.getElementById("recuperar-email").value;
+  const novaSenha = document.getElementById("recuperar-senha").value;
+
+  if (!email || !novaSenha) {
+    mostrarErro("Preencha o e-mail e a nova senha.");
+    return;
+  }
+
+  if (novaSenha.length < 6) {
+    mostrarErro("A senha deve ter pelo menos 6 caracteres.");
+    return;
+  }
+
+  btnRecuperar.disabled = true;
+  btnRecuperar.textContent = "Redefinindo...";
+
+  try {
+    const resposta = await fetch(API_AUTH + "/recuperar-senha", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, novaSenha: novaSenha }),
+    });
+
+    if (resposta.ok) {
+      mensagemErro.style.color = "green";
+      mensagemErro.textContent = "Senha redefinida! Faça login.";
+      mostrarLogin();
+    } else {
+      const texto = await resposta.text();
+      mostrarErro(texto || "E-mail não encontrado.");
+    }
+  } catch (error) {
+    mostrarErro("Erro ao conectar. Tente novamente.");
+  }
+
+  btnRecuperar.disabled = false;
+  btnRecuperar.textContent = "Redefinir senha";
 });
